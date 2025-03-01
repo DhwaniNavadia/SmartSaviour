@@ -11,9 +11,10 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await CacheData.cacheDataInit();
-  await Cachedata.cachedataboolean();
 
+   await CacheData.cacheDataInit();
+   await Hive.initFlutter();
+  
   Hive.registerAdapter(ChatMessageModelAdapter());
   runApp(const MyApp());
 }
