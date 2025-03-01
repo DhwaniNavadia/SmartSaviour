@@ -1,4 +1,4 @@
- // //? update email
+ //? update email
   // Future<void> updateEmail({required String newEmail}) async {
   //   emit(ProfileUpdateLoading());
   //   try {
