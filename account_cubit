@@ -1,4 +1,55 @@
- //? update email
+import 'dart:developer';
+
+import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dr_ai/cache/cache.dart';
+import 'package:dr_ai/data/model/user_data_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:meta/meta.dart';
+part 'account_state.dart';
+
+class AccountCubit extends Cubit<AccountState> {
+  AccountCubit() : super(AccountInitial());
+  final _firestore = FirebaseFirestore.instance;
+  Future<void> getprofileData() async {
+    emit(AccountLoading());
+    try {
+      UserDataModel? userDataModel;
+      _firestore
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .snapshots()
+          .listen((event) {
+        userDataModel = UserDataModel.fromJson(event.data()!);
+        CacheData.setData(key: "name", value: userDataModel!.name);
+        CacheData.setMapData(key: "userData", value: userDataModel!.toJson());
+        emit(AccountSuccess(userDataModel: userDataModel!));
+      });
+    } on FirebaseException catch (err) {
+      emit(AccountFailure(message: err.toString()));
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//? update email
   // Future<void> updateEmail({required String newEmail}) async {
   //   emit(ProfileUpdateLoading());
   //   try {
