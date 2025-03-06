@@ -2,7 +2,7 @@
 
 >> Dr. AI - Your Medical Assistant
 
-Drive Demo Link: https://drive.google.com/file/d/1Axv1BxvTYhwAjGqKB9PgKLvPQMsAp8mG/view?usp=sharing
+
 
 Dr. AI is an advanced, Flutter-based mobile application developed to act as your personal medical assistant. It combines state-of-the-art technology with medical expertise to provide users with a comprehensive healthcare companion right on their smartphones. The application offers a range of features designed to make healthcare information and services easily accessible, ensuring users can manage their medical needs effectively and promptly.
 
